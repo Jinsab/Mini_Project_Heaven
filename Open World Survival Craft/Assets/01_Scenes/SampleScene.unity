@@ -183,7 +183,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 16.875
+  orthographic size: 2.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -548,8 +548,9 @@ GameObject:
   - component: {fileID: 490962524}
   - component: {fileID: 490962522}
   - component: {fileID: 490962521}
-  - component: {fileID: 490962520}
   - component: {fileID: 490962526}
+  - component: {fileID: 490962520}
+  - component: {fileID: 490962527}
   - component: {fileID: 490962525}
   m_Layer: 0
   m_Name: Player
@@ -682,7 +683,6 @@ MonoBehaviour:
   Input: {fileID: 490962522}
   Rigidbody: {fileID: 490962523}
   Animator: {fileID: 490962524}
-  SpriteRenderer: {fileID: 344713055}
   <PlayerMovement>k__BackingField: {fileID: 490962520}
   <stateMachine>k__BackingField: {fileID: 490962526}
   <AnimationData>k__BackingField: {fileID: 490962525}
@@ -795,6 +795,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33385a413fc32dc4293b30fb5d78f90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
+--- !u!114 &490962527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490962515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f46c8858caffcd498b8bb309b3852df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
 --- !u!1 &799687096
 GameObject:
   m_ObjectHideFlags: 0

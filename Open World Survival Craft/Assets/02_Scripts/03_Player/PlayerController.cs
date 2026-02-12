@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     public PlayerInput Input;
     public Rigidbody Rigidbody;
     public Animator Animator;
-    public SpriteRenderer SpriteRenderer;
 
     [Header("# Player Data")]
     [field: SerializeField] public PlayerMovement PlayerMovement { get; private set; }
