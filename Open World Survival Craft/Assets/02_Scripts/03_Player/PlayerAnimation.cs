@@ -39,8 +39,14 @@ using UnityEngine;
 [Serializable]
 public class PlayerAnimation : MonoBehaviour
 {
+    [Header("# Player")]
+    [SerializeField] private PlayerController Player;
+
+    [Header("# Parameter")]
+    [SerializeField] private string stateParameterName = "State";
+    [SerializeField] private string directionParameterName = "Direction";
+
     [Header("# Ground")]
-    [SerializeField] private string groundParameterName = "@Ground";
     [SerializeField] private string idleParameterName = "Idle";
     [SerializeField] private string walkParameterName = "Walk";
     [SerializeField] private string runParameterName = "Run";
@@ -48,7 +54,9 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private string attackParameterName = "Attack";
 
-    public int GroundParameterHash { get; private set; }
+    public int StateParameterHash { get; private set; }
+    public int DirectionParameterHash { get; private set; }
+
     public int IdleParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
     public int RunParameterHash { get; private set; }
@@ -61,9 +69,17 @@ public class PlayerAnimation : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        Player.Animator.SetInteger(StateParameterHash, (int)Player.stateMachine.CurrentState);
+        Player.Animator.SetFloat(DirectionParameterHash, (int)Player.PlayerLook.CurrentLookDirection);
+    }
+
     public void Initialize()
     {
-        GroundParameterHash = Animator.StringToHash(groundParameterName);
+        StateParameterHash = Animator.StringToHash(stateParameterName);
+        DirectionParameterHash = Animator.StringToHash(directionParameterName);
+
         IdleParameterHash = Animator.StringToHash(idleParameterName);
         WalkParameterHash = Animator.StringToHash(walkParameterName);
         RunParameterHash = Animator.StringToHash(runParameterName);

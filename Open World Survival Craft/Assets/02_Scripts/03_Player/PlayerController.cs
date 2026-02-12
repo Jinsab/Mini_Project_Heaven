@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("# Player Data")]
     [field: SerializeField] public PlayerMovement PlayerMovement { get; private set; }
+    [field: SerializeField] public PlayerLook PlayerLook { get; private set; }
     [field: SerializeField] public PlayerStateMachine stateMachine { get; private set; }
 
     [Header("Animations")]
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         Input = GetComponent<PlayerInput>();
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         PlayerMovement = GetComponent<PlayerMovement>();
         stateMachine = GetComponent<PlayerStateMachine>();
 

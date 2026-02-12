@@ -324,6 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 344713054}
   - component: {fileID: 344713055}
+  - component: {fileID: 344713056}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -405,6 +406,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &344713056
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344713053}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87aa5803d7cb4564688ae9e25e5fec22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +568,6 @@ GameObject:
   - component: {fileID: 490962517}
   - component: {fileID: 490962516}
   - component: {fileID: 490962523}
-  - component: {fileID: 490962524}
   - component: {fileID: 490962522}
   - component: {fileID: 490962521}
   - component: {fileID: 490962526}
@@ -682,8 +704,9 @@ MonoBehaviour:
   <Data>k__BackingField: {fileID: 11400000, guid: 90ce3380f3dcbdb409df8d5820eedcfe, type: 2}
   Input: {fileID: 490962522}
   Rigidbody: {fileID: 490962523}
-  Animator: {fileID: 490962524}
+  Animator: {fileID: 344713056}
   <PlayerMovement>k__BackingField: {fileID: 490962520}
+  <PlayerLook>k__BackingField: {fileID: 490962527}
   <stateMachine>k__BackingField: {fileID: 490962526}
   <AnimationData>k__BackingField: {fileID: 490962525}
 --- !u!114 &490962522
@@ -743,28 +766,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &490962524
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490962515}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &490962525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +778,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703eeb22634e3d349aa9efd5e5a94dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
-  groundParameterName: '@Ground'
+  Player: {fileID: 490962521}
+  stateParameterName: State
+  directionParameterName: Direction
   idleParameterName: Idle
   walkParameterName: Walk
   runParameterName: Run

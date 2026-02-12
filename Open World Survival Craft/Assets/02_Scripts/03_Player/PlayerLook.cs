@@ -53,7 +53,5 @@ public class PlayerLook : MonoBehaviour
                     CurrentLookDirection = LookDirection.Down;
             }
         }
-
-        Debug.Log(CurrentLookDirection);
     }
 }
