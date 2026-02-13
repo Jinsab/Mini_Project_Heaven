@@ -2,19 +2,21 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - World
+  - Harvest
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - World
+  - Shadow
+  - Effect
+  - Enemy
   - 
   - 
   - 
@@ -41,3 +43,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: World
+    uniqueID: 3596141513
+    locked: 0
+  - name: Shadow
+    uniqueID: 3368283945
+    locked: 0
+  - name: Player
+    uniqueID: 3141103737
+    locked: 0
+  - name: Effects
+    uniqueID: 1863926219
+    locked: 0
+  m_RenderingLayers:
+  - Default
