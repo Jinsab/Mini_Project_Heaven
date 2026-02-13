@@ -53,8 +53,9 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public PlayerMovement PlayerMovement { get; private set; }
     [field: SerializeField] public PlayerLook PlayerLook { get; private set; }
     [field: SerializeField] public PlayerStateMachine stateMachine { get; private set; }
+    public SortingOrderController sortingController;
 
-    [Header("Animations")]
+    [Header("# Animations")]
     [field: SerializeField] public PlayerAnimation AnimationData { get; private set; }
 
     private void Awake()
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         PlayerMovement = GetComponent<PlayerMovement>();
         stateMachine = GetComponent<PlayerStateMachine>();
+        sortingController = GetComponent<SortingOrderController>();
 
         PlayerMovement.Initialize();
         stateMachine.Initialize();

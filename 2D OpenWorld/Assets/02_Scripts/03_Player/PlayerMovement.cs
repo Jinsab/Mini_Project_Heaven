@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         moveAction.performed += ctx =>
         {
             MoveInput = ctx.ReadValue<Vector2>();
+
             //moveVector = new Vector3(moveInput.x, 0, moveInput.y).normalized;
             //isMove = moveVector.magnitude > 0;
         };
@@ -94,5 +95,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Player.Rigidbody.MovePosition(Player.Rigidbody.position + move * speed * Time.fixedDeltaTime);
+    }
+
+    private void LateUpdate()
+    {
+        if (MoveInput != Vector2.zero)
+            Player.sortingController.UpdateSorting();
     }
 }

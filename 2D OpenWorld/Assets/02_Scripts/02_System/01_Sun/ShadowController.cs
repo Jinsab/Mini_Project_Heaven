@@ -23,12 +23,11 @@ public class ShadowController : MonoBehaviour
     [Header("Length Settings")]
     public float minLength = 0.4f;   // 정오
     public float maxLength = 1.8f;   // 해뜰 때/질 때
+    public float shadowOffsetY;
 
     private SpriteRenderer shadowRenderer;
     private SpriteRenderer parentRenderer;
-
-    private float spriteHeight;
-
+    
     void Awake()
     {
         shadowRenderer = GetComponent<SpriteRenderer>();
@@ -48,9 +47,7 @@ public class ShadowController : MonoBehaviour
         shadowRenderer.sprite = parentRenderer.sprite;
         shadowRenderer.color = new Color(0, 0, 0, 0.5f);
 
-        spriteHeight = parentRenderer.bounds.size.y;
-
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = Vector3.up * shadowOffsetY;
         transform.localScale = Vector3.one;
 
         // 같은 SortingLayer 사용 권장
