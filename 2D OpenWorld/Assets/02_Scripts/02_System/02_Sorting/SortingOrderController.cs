@@ -40,4 +40,9 @@ public class SortingOrderController : MonoBehaviour
             lastOrder = newOrder;
         }
     }
+
+    public int SortingOrder()
+    {
+        return lastOrder;
+    }
 }

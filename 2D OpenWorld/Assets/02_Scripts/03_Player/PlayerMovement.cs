@@ -8,7 +8,7 @@ using UnityEngine.Playables;
  *             
  *  [프로젝트 일자]
  *  파일 생성 일자 : 26.02.12 오후 20:48
- *  마지막 수정 일자 : 26.02.12 오후 20:48
+ *  마지막 수정 일자 : 26.02.13 오후 23:44
  *  
  *  [스크립트 목적 및 내용]
  *  1. 플레이어 이동 스크립트
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Player
     private PlayerController Player;
+    private SpriteRenderer shadowRenderer;
 
     // Player Input System
     private InputAction moveAction;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Player = GetComponent<PlayerController>();
         MovementSpeed = Player.Data.GroundedData.BaseSpeed;
+        shadowRenderer = Player.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         moveAction = Player.Input.actions["Move"];
         runAction = Player.Input.actions["Sprint"];
@@ -100,6 +102,12 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         if (MoveInput != Vector2.zero)
+        {
             Player.sortingController.UpdateSorting();
+
+            // 그림자는 항상 플레이어 뒤에 있어야 하기 때문에 1을 빼는 것이
+            // 의도한 효과를 일으킬 수 있음
+            shadowRenderer.sortingOrder = Player.sortingController.SortingOrder() - 1;
+        }
     }
 }
