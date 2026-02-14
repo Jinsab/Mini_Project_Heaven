@@ -6,22 +6,26 @@ using UnityEngine;
  *             
  *  [프로젝트 일자]
  *  파일 생성 일자 : 26.02.13 오후 20:46
- *  마지막 수정 일자 : 26.02.14 오후 17:45
+ *  마지막 수정 일자 : 26.02.14 오후 21:25
  *  
  *  [스크립트 목적 및 내용]
  *  1. 아이템 스크립트
- *    1-1. 아이템 
- *    1-2. 인벤토리 아이템 추가
- *    1-3. 인벤토리 아이템 제거
+ *    1-1. 아이템에 대한 기본 정보
  *    
  *  2. 큰 그림
  *    - Item (ScriptableObject)
  *      ├─ ItemData (기본 정보)
- *      ├─ EquipmentItem (장비 아이템)
- *      ├─ ConsumableItem (소비 아이템)
- *      └─ QuestItem
+ *      ├─ ItemDatabase (데이터베이스)
+ *      ├─ (Type)Item (아이템 타입)
+ *      │  ├─ ConsumableItem (소비 아이템)
+ *      │  └─ ToolItem (도구 아이템)
+ *      │
+ *      ├─ ItemDropSpawner
+ *      ├─ ItemDrop
+ *      ├─ DropTable
+ *      └─ DropData
  *      
- *    - Effect (ScriptableObject)
+ *    - Effect (ScriptableObject) [추후 구현 예정]
  *      ├─ StatModifierEffect
  *      ├─ HealOverTimeEffect
  *      └─ BuffEffect
