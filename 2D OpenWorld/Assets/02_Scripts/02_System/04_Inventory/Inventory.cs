@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 /*  
  *  [프로젝트 제목]
@@ -26,6 +27,13 @@ public class InventorySlot
     // 런타임 전용 (저장 안 됨)
     [System.NonSerialized]
     public Item item;
+
+    public InventorySlot(Item item, int amount)
+    {
+        this.itemId = item.itemId;
+        this.item = item;
+        this.amount = amount;
+    }
 }
 
 public class Inventory : MonoBehaviour
@@ -52,7 +60,7 @@ public class Inventory : MonoBehaviour
         // 아이템을 수집할 수 있는지 확인
         if (CanAdd(item, amount))
         {
-            List<InventorySlot> addItemSlot = slots.FindAll(slot => slot.item.itemId.Equals(item.itemId) && slot.amount != slot.item.maxStack); ;
+            List<InventorySlot> addItemSlot = slots.FindAll(slot => slot.itemId == item.itemId && slot.amount != slot.item.maxStack); ;
 
             // 같은 ID를 가진 아이템 리스트를 순회하며 아이템 추가
             foreach (var slot in addItemSlot)
@@ -97,7 +105,7 @@ public class Inventory : MonoBehaviour
             // 현재 아이템의 개수가 maxStack 초과한 경우
             if (amount - added > item.maxStack)
             {
-                slots.Add(new InventorySlot { item = item, amount = item.maxStack });
+                slots.Add(new InventorySlot(item, item.maxStack));
                 added += item.maxStack;
                 Debug.Log($"인벤토리에 {item.itemName} {item.maxStack}개 저장" +
                           $"\n초과 분량: {amount - added}");
@@ -105,7 +113,8 @@ public class Inventory : MonoBehaviour
             // 현재 아이템의 개수가 maxStack 이하인 경우
             else
             {
-                slots.Add(new InventorySlot { item = item, amount = amount - added });
+                slots.Add(new InventorySlot(item, amount - added));
+
                 Debug.Log($"인벤토리에 {item.itemName} {amount - added}개 저장");
                 return amount;
             }
@@ -151,6 +160,14 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(Item item, int amount)
     {
 
+    }
+
+    public void RestoreItems()
+    {
+        foreach (var slot in slots)
+        {
+            slot.item = ItemDatabase.Instance.GetItem(slot.itemId);
+        }
     }
 
     public bool IsFull()
